@@ -57,15 +57,21 @@
       var btn=form.querySelector('button[type="submit"]');
       var label=btn?btn.innerHTML:'';
       if(btn){btn.disabled=true;btn.textContent='Sending\u2026';}
+      var types={'admission-form':'enquiry','team-form':'team','review-form':'review'};
+      var fd=new FormData(form),obj={};
+      fd.forEach(function(v,k){if(typeof v==='string'){obj[k]=v;}});
+      /* 1) save to the admin dashboard, 2) email a copy. Either one succeeding counts as sent. */
+      var saved=(types[form.id]&&/^https?:/.test(location.protocol))
+        ?fetch('/api/submit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({type:types[form.id],data:obj})})
+          .then(function(r){return r.ok;}).catch(function(){return false;})
+        :Promise.resolve(false);
       var ajax=endpoint.replace('formsubmit.co/','formsubmit.co/ajax/');
-      fetch(ajax,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
-        .then(function(r){return r.json().then(function(j){return {ok:r.ok,j:j};});})
-        .then(function(res){
-          if(res.ok&&res.j&&String(res.j.success)==='true'){form.reset();show('success');}
-          else{fallback();}
-        })
-        .catch(function(){fallback();})
-        .then(function(){if(btn){btn.disabled=false;btn.innerHTML=label;}});
+      var emailed=fetch(ajax,{method:'POST',body:fd,headers:{'Accept':'application/json'}})
+        .then(function(r){return r.json().then(function(j){return r.ok&&j&&String(j.success)==='true';});})
+        .catch(function(){return false;});
+      Promise.all([saved,emailed]).then(function(res){
+        if(res[0]||res[1]){form.reset();show('success');}else{fallback();}
+      }).then(function(){if(btn){btn.disabled=false;btn.innerHTML=label;}});
     });
   });
   if(/[?&]sent=1/.test(location.search)){
@@ -75,7 +81,7 @@
   var rg=document.getElementById('reviews-grid');
   if(rg&&window.fetch&&/^https?:/.test(location.protocol)){
     var qIcon=rg.querySelector('.q'),avIcon=rg.querySelector('.avatar');
-    fetch('reviews.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(d){
+    fetch('/api/reviews').then(function(r){return r.ok?r.json():null;}).then(function(d){return (d&&d.reviews&&d.reviews.length)?d:fetch('reviews.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():null;});}).catch(function(){return fetch('reviews.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():null;});}).then(function(d){
       var list=((d&&d.reviews)||[]).filter(function(r){return r&&r.published!==false&&r.name&&r.text;});
       if(!list.length||!qIcon||!avIcon){return;}
       var qh=qIcon.outerHTML,ah=avIcon.outerHTML;rg.innerHTML='';
