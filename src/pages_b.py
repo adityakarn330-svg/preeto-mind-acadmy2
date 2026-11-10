@@ -88,7 +88,7 @@ def testimonials():
 {page_hero("Testimonials", "Genuine feedback from PreetoMind Academy students and parents, shared with their permission.", eyebrow="Student & Parent Feedback")}
 <section><div class="container">
   <div class="notice">{icon("shield")}<p>We publish only authentic testimonials received from our students and parents. Names and photographs are shown only with consent. We do not use fictional reviews or ratings.</p></div>
-  <div class="grid g-3">{cards}</div>
+  <div class="grid g-3" id="reviews-grid">{cards}</div>
 </div></section>
 <section class="section-alt" id="share-review"><div class="container"><div class="split wide-right" style="align-items:start">
   <div><div class="eyebrow">Share Your Experience</div><h2>Are You a PreetoMind Academy Student or Parent?</h2>

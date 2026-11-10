@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Admin Dashboard | PreetoMind Academy</title>
+<style>
+:root{--or:#E8731A;--ord:#c65f10;--dk:#1E1F22;--bg:#f4f2ee;--card:#fff;--bd:#e2ded7;--mu:#666a72;--ok:#1f7a45;--bad:#b42318;color-scheme:light}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--dk);font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+header{background:var(--dk);color:#fff;padding:12px 16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;position:sticky;top:0;z-index:5}
+header b{font-size:1.05rem}header b span{color:var(--or)}header a{color:#fff;opacity:.8;margin-left:auto;font-size:.85rem}
+nav{display:flex;gap:6px;overflow-x:auto;padding:10px 12px;background:var(--card);border-bottom:1px solid var(--bd)}
+nav button{border:0;background:none;padding:8px 14px;border-radius:8px;font:inherit;font-weight:600;color:var(--mu);cursor:pointer;white-space:nowrap}
+nav button.on{background:var(--or);color:#fff}
+main{max-width:980px;margin:0 auto;padding:16px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:16px;margin-bottom:14px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
+.stat{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:14px}.stat b{display:block;font-size:1.7rem;color:var(--or)}.stat span{color:var(--mu);font-size:.85rem}
+h2{margin:0 0 10px;font-size:1.15rem}h3{margin:0 0 8px;font-size:1rem}
+label{display:block;font-weight:600;font-size:.85rem;margin:8px 0 3px}
+input,select,textarea{width:100%;padding:9px 10px;border:1px solid var(--bd);border-radius:8px;font:inherit;background:#fff;color:var(--dk)}
+textarea{min-height:90px;resize:vertical}
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.btn{border:0;border-radius:8px;padding:9px 14px;font:inherit;font-weight:700;cursor:pointer;background:var(--or);color:#fff}
+.btn.g{background:#fff;color:var(--dk);border:1px solid var(--bd)}.btn.d{background:#fff;color:var(--bad);border:1px solid var(--bd)}.btn.s{padding:5px 10px;font-size:.8rem}
+.bar{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.item{border:1px solid var(--bd);border-radius:10px;padding:12px;margin-top:10px;background:#fff}
+.item p{margin:6px 0}.meta{color:var(--mu);font-size:.85rem}
+.tag{display:inline-block;font-size:.72rem;font-weight:700;padding:2px 9px;border-radius:99px;border:1px solid currentColor}
+.t-pub{color:var(--ok)}.t-hid{color:var(--mu)}.t-New{color:var(--or)}.t-Contacted{color:#1a5fb4}.t-Demo{color:#7a3db3}.t-Admitted{color:var(--ok)}.t-Closed{color:var(--mu)}
+.note{background:#fff7ef;border-left:4px solid var(--or);padding:10px 12px;border-radius:6px;font-size:.9rem;margin-bottom:12px}
+.hide{display:none}small{color:var(--mu)}
+@media (max-width:560px){main{padding:10px}}
+</style></head><body>
+<header><b>PreetoMind <span>Academy</span> &middot; Admin</b><a href="index.html">View website &rarr;</a></header>
+<nav id="tabs"></nav>
+<main>
+<section id="p-home">
+  <div class="stats" id="stats"></div>
+  <div class="card" style="margin-top:14px"><h2>Quick links</h2>
+    <div class="bar"><a class="btn g s" href="https://mail.google.com/mail/u/0/#search/subject%3A%22Admission+Enquiry%22" target="_blank" rel="noopener">Gmail: enquiries</a>
+    <a class="btn g s" href="https://mail.google.com/mail/u/0/#search/subject%3A%22Student+Review%22" target="_blank" rel="noopener">Gmail: reviews</a>
+    <a class="btn g s" href="https://wa.me/917979073971" target="_blank" rel="noopener">WhatsApp</a></div></div>
+  <div class="card"><h2>How this dashboard works</h2>
+    <p>Enquiries and reviews arrive in your Gmail. Use this page to keep track of them and to choose which reviews appear on the website.</p>
+    <ol><li>Copy a student's review from Gmail into <b>Reviews</b> and tick <i>Published</i>.</li>
+    <li>Click <b>Download reviews.json</b>.</li>
+    <li>Upload that file to <code>site/reviews.json</code> in GitHub. Vercel updates the site automatically.</li></ol>
+    <p class="meta">Data is saved only in this browser. Use <b>Backup</b> to keep a copy or move to another device.</p></div>
+</section>
+
+<section id="p-reviews" class="hide">
+  <div class="card"><h2 id="rf-title">Add a review</h2>
+    <div class="note">Only add reviews that were really sent to you, and only with the student's or parent's permission. Do not edit their meaning.</div>
+    <div class="row"><div><label>First name</label><input id="r-name"></div>
+    <div><label>Class / Course</label><input id="r-course" placeholder="e.g. Class 10"></div>
+    <div><label>Student or Parent</label><select id="r-role"><option>Student</option><option>Parent</option></select></div></div>
+    <label>Review (their own words)</label><textarea id="r-text"></textarea>
+    <label style="display:flex;gap:8px;align-items:center;font-weight:600"><input type="checkbox" id="r-pub" style="width:auto" checked> Published (show on the website)</label>
+    <label style="display:flex;gap:8px;align-items:center;font-weight:600"><input type="checkbox" id="r-perm" style="width:auto"> I have their permission to publish this</label>
+    <div class="bar"><button class="btn" id="r-save">Save review</button><button class="btn g hide" id="r-cancel">Cancel edit</button></div></div>
+  <div class="card"><h2>All reviews <small id="r-count"></small></h2>
+    <div class="bar"><button class="btn" id="r-export">Download reviews.json</button>
+    <label class="btn g" style="margin:0;cursor:pointer">Import reviews.json<input type="file" id="r-import" accept=".json" class="hide"></label></div>
+    <div id="r-list"></div></div>
+</section>
+
+<section id="p-enq" class="hide">
+  <div class="card"><h2 id="ef-title">Add an enquiry</h2>
+    <div class="row"><div><label>Student name</label><input id="e-student"></div><div><label>Parent name</label><input id="e-parent"></div>
+    <div><label>Class / Course</label><input id="e-class"></div><div><label>Parent mobile</label><input id="e-phone" inputmode="tel" placeholder="+91"></div>
+    <div><label>Status</label><select id="e-status"><option>New</option><option>Contacted</option><option>Demo</option><option>Admitted</option><option>Closed</option></select></div></div>
+    <label>Notes</label><textarea id="e-notes" style="min-height:60px"></textarea>
+    <div class="bar"><button class="btn" id="e-save">Save enquiry</button><button class="btn g hide" id="e-cancel">Cancel edit</button></div></div>
+  <div class="card"><h2>Enquiries <small id="e-count"></small></h2>
+    <div class="bar"><select id="e-filter" style="width:auto"><option value="">All statuses</option><option>New</option><option>Contacted</option><option>Demo</option><option>Admitted</option><option>Closed</option></select>
+    <button class="btn g" id="e-csv">Download CSV</button></div><div id="e-list"></div></div>
+</section>
+
+<section id="p-set" class="hide">
+  <div class="card"><h2>Backup</h2><p>Save everything from this browser, or restore it on another device.</p>
+    <div class="bar"><button class="btn" id="b-save">Download backup</button>
+    <label class="btn g" style="margin:0;cursor:pointer">Restore backup<input type="file" id="b-load" accept=".json" class="hide"></label></div></div>
+  <div class="card"><h2>Please note</h2><p>This page is not password protected, because it only works with data saved in your own browser. It cannot change the live website by itself, so no one else can use it to alter your site. Do not put private details you are not comfortable keeping on this device.</p></div>
+</section>
+</main>
+<script>
+(function(){
+var KEY='pm_admin_v1',D={reviews:[],enquiries:[]};
+function load(){try{var s=localStorage.getItem(KEY);if(s){var o=JSON.parse(s);D.reviews=o.reviews||[];D.enquiries=o.enquiries||[];}}catch(e){}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(D));}catch(e){alert('Could not save in this browser. Please download a backup.');}}
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+function $(i){return document.getElementById(i);}
+function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,6);}
+function dl(name,text,type){var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type:type||'application/json'}));a.download=name;document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove();},500);}
+var tabs=[['home','Overview'],['reviews','Reviews'],['enq','Enquiries'],['set','Backup']];
+function show(t){tabs.forEach(function(x){$('p-'+x[0]).classList.toggle('hide',x[0]!==t);});[].forEach.call($('tabs').children,function(b){b.classList.toggle('on',b.dataset.t===t);});try{history.replaceState(null,'','#'+t);}catch(e){}}
+$('tabs').innerHTML=tabs.map(function(x){return '<button data-t="'+x[0]+'">'+x[1]+'</button>';}).join('');
+$('tabs').addEventListener('click',function(e){if(e.target.dataset.t)show(e.target.dataset.t);});
+
+function stats(){var pub=D.reviews.filter(function(r){return r.published;}).length,c=function(s){return D.enquiries.filter(function(e){return e.status===s;}).length;};
+ $('stats').innerHTML=[[D.reviews.length,'Reviews saved'],[pub,'Published'],[D.enquiries.length,'Enquiries'],[c('New'),'New'],[c('Demo'),'Demo stage'],[c('Admitted'),'Admitted']].map(function(x){return '<div class="stat"><b>'+x[0]+'</b><span>'+x[1]+'</span></div>';}).join('');}
+
+var editR=null;
+function renderR(){stats();$('r-count').textContent='('+D.reviews.length+')';
+ $('r-list').innerHTML=D.reviews.length?D.reviews.map(function(r){return '<div class="item"><div><b>'+esc(r.name)+'</b> <span class="meta">'+esc(r.course)+' &middot; '+esc(r.role)+'</span> <span class="tag '+(r.published?'t-pub':'t-hid')+'">'+(r.published?'Published':'Hidden')+'</span></div><p>'+esc(r.text)+'</p><div class="bar"><button class="btn g s" data-a="tog" data-id="'+r.id+'">'+(r.published?'Hide':'Publish')+'</button><button class="btn g s" data-a="edit" data-id="'+r.id+'">Edit</button><button class="btn d s" data-a="del" data-id="'+r.id+'">Delete</button></div></div>';}).join(''):'<p class="meta">No reviews yet. Add one above.</p>';}
+function resetR(){editR=null;['r-name','r-course','r-text'].forEach(function(i){$(i).value='';});$('r-pub').checked=true;$('r-perm').checked=false;$('rf-title').textContent='Add a review';$('r-cancel').classList.add('hide');}
+$('r-save').onclick=function(){var n=$('r-name').value.trim(),t=$('r-text').value.trim(),c=$('r-course').value.trim();
+ if(!n||!t||!c){alert('Please fill in the name, class / course and review.');return;}
+ if($('r-pub').checked&&!$('r-perm').checked){alert('Please confirm you have permission before publishing this review.');return;}
+ var o={name:n,course:c,role:$('r-role').value,text:t,published:$('r-pub').checked};
+ if(editR){D.reviews.forEach(function(r){if(r.id===editR)Object.assign(r,o);});}else{o.id=uid();o.date=new Date().toISOString().slice(0,10);D.reviews.unshift(o);}
+ save();resetR();renderR();};
+$('r-cancel').onclick=resetR;
+$('r-list').onclick=function(e){var b=e.target.closest('button');if(!b)return;var id=b.dataset.id,r=D.reviews.filter(function(x){return x.id===id;})[0];if(!r)return;
+ if(b.dataset.a==='tog'){if(!r.published&&!confirm('Do you have permission to publish this review?'))return;r.published=!r.published;save();renderR();}
+ else if(b.dataset.a==='del'){if(confirm('Delete this review?')){D.reviews=D.reviews.filter(function(x){return x.id!==id;});save();renderR();}}
+ else{editR=id;$('r-name').value=r.name;$('r-course').value=r.course;$('r-role').value=r.role;$('r-text').value=r.text;$('r-pub').checked=r.published;$('r-perm').checked=r.published;$('rf-title').textContent='Edit review';$('r-cancel').classList.remove('hide');window.scrollTo(0,0);}};
+$('r-export').onclick=function(){var out=D.reviews.filter(function(r){return r.published;}).map(function(r){return {name:r.name,course:r.course,role:r.role,text:r.text,published:true};});
+ dl('reviews.json',JSON.stringify({reviews:out},null,2));};
+$('r-import').onchange=function(e){var f=e.target.files[0];if(!f)return;var rd=new FileReader();rd.onload=function(){try{var o=JSON.parse(rd.result),n=0;(o.reviews||[]).forEach(function(r){if(r&&r.name&&r.text){D.reviews.push({id:uid(),name:String(r.name),course:String(r.course||''),role:String(r.role||'Student'),text:String(r.text),published:r.published!==false,date:''});n++;}});save();renderR();alert('Imported '+n+' reviews.');}catch(x){alert('That file could not be read.');}};rd.readAsText(f);e.target.value='';};
+
+var editE=null;
+function renderE(){stats();var f=$('e-filter').value,list=D.enquiries.filter(function(e){return !f||e.status===f;});$('e-count').textContent='('+list.length+')';
+ $('e-list').innerHTML=list.length?list.map(function(e){var ph=(e.phone||'').replace(/[^0-9]/g,'');return '<div class="item"><div><b>'+esc(e.student)+'</b> <span class="meta">'+esc(e.cls)+(e.parent?' &middot; Parent: '+esc(e.parent):'')+'</span> <span class="tag t-'+esc(e.status)+'">'+esc(e.status)+'</span></div>'+(e.phone?'<p class="meta">'+esc(e.phone)+'</p>':'')+(e.notes?'<p>'+esc(e.notes)+'</p>':'')+'<p class="meta">Added '+esc(e.date)+'</p><div class="bar">'+(ph?'<a class="btn g s" target="_blank" rel="noopener" href="https://wa.me/'+(ph.length===10?'91'+ph:ph)+'">WhatsApp</a>':'')+'<button class="btn g s" data-a="edit" data-id="'+e.id+'">Edit</button><button class="btn d s" data-a="del" data-id="'+e.id+'">Delete</button></div></div>';}).join(''):'<p class="meta">Nothing here yet.</p>';}
+function resetE(){editE=null;['e-student','e-parent','e-class','e-phone','e-notes'].forEach(function(i){$(i).value='';});$('e-status').value='New';$('ef-title').textContent='Add an enquiry';$('e-cancel').classList.add('hide');}
+$('e-save').onclick=function(){var s=$('e-student').value.trim();if(!s){alert('Please enter the student name.');return;}
+ var o={student:s,parent:$('e-parent').value.trim(),cls:$('e-class').value.trim(),phone:$('e-phone').value.trim(),status:$('e-status').value,notes:$('e-notes').value.trim()};
+ if(editE){D.enquiries.forEach(function(e){if(e.id===editE)Object.assign(e,o);});}else{o.id=uid();o.date=new Date().toISOString().slice(0,10);D.enquiries.unshift(o);}
+ save();resetE();renderE();};
+$('e-cancel').onclick=resetE;$('e-filter').onchange=renderE;
+$('e-list').onclick=function(ev){var b=ev.target.closest('button');if(!b)return;var id=b.dataset.id,e=D.enquiries.filter(function(x){return x.id===id;})[0];if(!e)return;
+ if(b.dataset.a==='del'){if(confirm('Delete this enquiry?')){D.enquiries=D.enquiries.filter(function(x){return x.id!==id;});save();renderE();}}
+ else{editE=id;$('e-student').value=e.student;$('e-parent').value=e.parent;$('e-class').value=e.cls;$('e-phone').value=e.phone;$('e-status').value=e.status;$('e-notes').value=e.notes;$('ef-title').textContent='Edit enquiry';$('e-cancel').classList.remove('hide');window.scrollTo(0,0);}};
+$('e-csv').onclick=function(){var q=function(v){v=String(v==null?'':v);if(/^[=+\-@]/.test(v))v="'"+v;return '"'+v.replace(/"/g,'""')+'"';};
+ var rows=[['Date','Student','Parent','Class/Course','Phone','Status','Notes']].concat(D.enquiries.map(function(e){return [e.date,e.student,e.parent,e.cls,e.phone,e.status,e.notes];}));
+ dl('enquiries.csv',rows.map(function(r){return r.map(q).join(',');}).join('\n'),'text/csv');};
+
+$('b-save').onclick=function(){dl('preetomind-admin-backup.json',JSON.stringify(D,null,2));};
+$('b-load').onchange=function(e){var f=e.target.files[0];if(!f)return;var rd=new FileReader();rd.onload=function(){try{var o=JSON.parse(rd.result);if(!confirm('Replace the data in this browser with the backup?'))return;D.reviews=o.reviews||[];D.enquiries=o.enquiries||[];save();renderR();renderE();alert('Backup restored.');}catch(x){alert('That file could not be read.');}};rd.readAsText(f);e.target.value='';};
+
+load();renderR();renderE();var h=location.hash.slice(1);show(tabs.some(function(x){return x[0]===h;})?h:'home');
+})();
+</script></body></html>

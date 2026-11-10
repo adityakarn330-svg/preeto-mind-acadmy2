@@ -72,5 +72,20 @@
     var f0=document.querySelector('form.js-form');
     if(f0){var ok=f0.querySelector('.form-status[data-status="success"]');if(ok){ok.classList.add('show');ok.scrollIntoView({block:'center'});}}
   }
+  var rg=document.getElementById('reviews-grid');
+  if(rg&&window.fetch&&/^https?:/.test(location.protocol)){
+    var qIcon=rg.querySelector('.q'),avIcon=rg.querySelector('.avatar');
+    fetch('reviews.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(d){
+      var list=((d&&d.reviews)||[]).filter(function(r){return r&&r.published!==false&&r.name&&r.text;});
+      if(!list.length||!qIcon||!avIcon){return;}
+      var qh=qIcon.outerHTML,ah=avIcon.outerHTML;rg.innerHTML='';
+      list.forEach(function(r){
+        var a=document.createElement('article');a.className='card testimonial';a.innerHTML=qh+'<p></p><div class="who">'+ah+'<div><strong></strong><br><span class="small"></span></div></div>';
+        a.querySelector('p').textContent=r.text;a.querySelector('strong').textContent=r.name;
+        a.querySelector('.small').textContent=(r.course||'')+(r.course&&r.role?' \u00b7 ':'')+(r.role||'');
+        rg.appendChild(a);
+      });
+    }).catch(function(){});
+  }
   var y=document.getElementById('year');if(y){y.textContent=new Date().getFullYear();}
 })();
