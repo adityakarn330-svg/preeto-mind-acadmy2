@@ -11,7 +11,8 @@ async function sb(path, opts = {}) {
     ...opts,
     headers: {
       apikey: SB_KEY,
-      Authorization: 'Bearer ' + SB_KEY,
+      // New-format keys (sb_secret_...) are not JWTs: send them on the apikey header only.
+      ...(SB_KEY.startsWith('sb_') ? {} : { Authorization: 'Bearer ' + SB_KEY }),
       'Content-Type': 'application/json',
       Prefer: 'return=representation',
       ...(opts.headers || {}),
