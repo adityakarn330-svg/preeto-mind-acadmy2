@@ -70,17 +70,47 @@ def assessment():
 
 
 # ============================================================== TESTIMONIALS
+# Add REAL reviews here (only with the student's / parent's permission). Example:
+# {"name": "Aarav", "course": "Class 10", "role": "Student", "text": "Their words exactly as shared."}
+REVIEWS = []
+
+
+def review_card(r):
+    import html as _h
+    return (f'<article class="card testimonial">{icon("quote","q")}<p>{_h.escape(r["text"])}</p>'
+            f'<div class="who"><div class="avatar">{icon("user")}</div><div><strong>{_h.escape(r["name"])}</strong><br>'
+            f'<span class="small">{_h.escape(r["course"])} &middot; {_h.escape(r["role"])}</span></div></div></article>')
+
+
 def testimonials():
+    cards = "".join(review_card(r) for r in REVIEWS) if REVIEWS else "".join(testimonial_slot() for _ in range(6))
     body = f'''
 {page_hero("Testimonials", "Genuine feedback from PreetoMind Academy students and parents, shared with their permission.", eyebrow="Student & Parent Feedback")}
 <section><div class="container">
   <div class="notice">{icon("shield")}<p>We publish only authentic testimonials received from our students and parents. Names and photographs are shown only with consent. We do not use fictional reviews or ratings.</p></div>
-  <div class="grid g-3">{"".join(testimonial_slot() for _ in range(6))}</div>
+  <div class="grid g-3">{cards}</div>
 </div></section>
-<section class="section-alt"><div class="container"><div class="split">
+<section class="section-alt" id="share-review"><div class="container"><div class="split wide-right" style="align-items:start">
   <div><div class="eyebrow">Share Your Experience</div><h2>Are You a PreetoMind Academy Student or Parent?</h2>
-  <p>We would value your feedback. Please share your experience with us on WhatsApp or by email. With your permission, we may publish it here using your first name, class or course, and an optional photograph.</p></div>
-  <div class="btn-row"><a class="btn btn-whatsapp" href="{wa_href("Hello PreetoMind Academy, I would like to share feedback.")}">{WA_SVG}Share on WhatsApp</a><a class="btn btn-dark" href="{mail_href("Feedback for PreetoMind Academy")}">{icon("mail")}Share by Email</a></div>
+  <p>We would value your honest feedback. Fill in the form, or send it to us on WhatsApp or by email. With your permission, we may publish it here using your first name, class or course.</p>
+  <div class="btn-row"><a class="btn btn-whatsapp" href="{wa_href("Hello PreetoMind Academy, I would like to share feedback.")}">{WA_SVG}Share on WhatsApp</a><a class="btn btn-dark" href="{mail_href("Feedback for PreetoMind Academy")}">{icon("mail")}Share by Email</a></div></div>
+  <div class="form-card">
+    <h2 style="font-size:1.5rem">Write a Review</h2>
+    <p class="small muted">Fields marked <span class="hl">*</span> are required.</p>
+    {form_open("review-form", "New Student Review - PreetoMind Academy")}
+      <div class="form-grid">
+        <div><label for="r-name">Your First Name <span class="req">*</span></label><input id="r-name" name="name" autocomplete="given-name" required></div>
+        <div><label for="r-role">You are a <span class="req">*</span></label><select id="r-role" name="role" required><option value="">Select</option><option>Student</option><option>Parent</option></select></div>
+        <div class="full"><label for="r-course">Class / Course <span class="req">*</span></label><input id="r-course" name="class_course" placeholder="e.g. Class 10, NEET Biology" required></div>
+        <div class="full"><label for="r-text">Your Feedback <span class="req">*</span></label><textarea id="r-text" name="review" required minlength="20" placeholder="Share your experience with PreetoMind Academy"></textarea></div>
+        <div class="full"><label for="r-email">Email (optional, so we can thank you)</label><input id="r-email" name="email" type="email" autocomplete="email"></div>
+        <div class="full"><label style="display:flex;gap:10px;align-items:flex-start;font-weight:500;font-family:var(--font-body)"><input type="checkbox" name="permission_to_publish" value="yes" required style="width:auto;margin-top:5px"> <span>I give permission to PreetoMind Academy to publish this feedback on its website with my first name and class or course. <span class="req">*</span></span></label></div>
+      </div>
+      <button class="btn btn-primary mt-2" type="submit" style="width:100%">{icon("send")}Submit Review</button>
+      <p class="form-note">Reviews are checked by PreetoMind Academy before they are published.</p>
+      {form_status(f"<strong>Form not yet connected.</strong> Until it is, please share your feedback on <a href='{wa_href()}'>WhatsApp</a> or by <a href='{mail_href()}'>email</a>.", "Thank you for your feedback. It has reached PreetoMind Academy.")}
+    </form>
+  </div>
 </div></div></section>
 {cta_band()}
 '''
