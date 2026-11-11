@@ -63,7 +63,7 @@ SUPPORT = [
 
 def dept_card(i, d, link=True):
     more = f'<a class="more" href="courses.html#{d["id"]}">View department {icon("arrow")}</a>' if link else ""
-    return (f'<article class="card dept-card"><span class="dept-num" aria-hidden="true">0{i}</span>'
+    return (f'<article class="card dept-card"><span class="dept-num" aria-hidden="true" data-n="0{i}"></span>'
             f'<div class="icon-badge">{icon(d["icon"])}</div><div class="meta">{d["level"]}</div>'
             f'<h3>{d["name"]}</h3><p>{d["summary"]}</p>{more}</article>')
 
@@ -120,7 +120,7 @@ def home():
       <div class="eyebrow">Meet the Founder</div>
       <h2 class="founder-name">Preety Kumari</h2>
       <div class="founder-role">Founder – PreetoMind Academy | Educator | Creative Writer</div>
-      <div class="pill-row"><span class="pill">B.Sc. Zoology with Research</span><span class="pill">Biology &amp; Science</span><span class="pill">English Grammar &amp; Vocabulary</span><span class="pill">Literary Award Recipient</span></div>
+      <div class="pill-row"><span class="pill">Biology &amp; Science</span><span class="pill">English Grammar &amp; Vocabulary</span><span class="pill">Literary Award Recipient</span></div>
       <p>Preety Kumari founded PreetoMind Academy to give students what she believes every learner deserves: clear concepts, consistent practice and personal academic attention. With a B.Sc. in Zoology with Research, she brings a strong scientific foundation to her teaching of Biology and Science.</p>
       <p>Alongside her experience in online tutoring, she teaches English Grammar and Vocabulary and creates educational content for her students. She is also a creative writer and a recipient of literary recognition. This mix of scientific discipline and creative expression shapes how she teaches: precise and thorough, but also engaging and encouraging.</p>
       <p class="small muted">Professional certifications and literary achievements: {ph("Founder to add verified certification and award names")}</p>
@@ -133,7 +133,7 @@ def home():
   <div class="section-head center"><div class="eyebrow">Learning Support</div>
     <h2>How Every Student Is Supported</h2>
     <p class="lead">A structured academic support system that keeps learning on track from the first class to the final examination.</p></div>
-  <div class="grid g-3" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">{"".join(feature(*s) for s in SUPPORT)}</div>
+  <div class="grid g-3" style="grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr))">{"".join(feature(*s) for s in SUPPORT)}</div>
 </div></section>
 
 <section class="section-alt"><div class="container">
@@ -207,7 +207,7 @@ def about():
 <section><div class="container">
   <div class="section-head center"><div class="eyebrow">Educational Values</div><h2>The Eight Values That Guide Us</h2>
   <p class="lead">These values shape how we teach, how we support students and how we work with parents.</p></div>
-  <div class="grid g-4">{"".join(f'<div class="card value"><span class="num">0{i+1}</span><div><h4>{t}</h4><p class="small mb-0">{d}</p></div></div>' for i, (t, d) in enumerate(VALUES))}</div>
+  <div class="grid g-4">{"".join(f'<div class="card value"><span class="num">0{i+1}</span><div><h3 class="h4">{t}</h3><p class="small mb-0">{d}</p></div></div>' for i, (t, d) in enumerate(VALUES))}</div>
 </div></section>
 
 <section class="section-alt"><div class="container">
@@ -245,7 +245,7 @@ def founder():
   <div>
     <h2 class="founder-name">Preety Kumari</h2>
     <div class="founder-role">Founder and Academic Educator, PreetoMind Academy</div>
-    <div class="pill-row"><span class="pill">Creative Writer</span><span class="pill">Literary Award Recipient</span><span class="pill">B.Sc. Zoology with Research</span></div>
+    <div class="pill-row"><span class="pill">Creative Writer</span><span class="pill">Literary Award Recipient</span></div>
     <p>Preety Kumari is the founder and academic educator of PreetoMind Academy. She leads the academy’s teaching, curriculum planning and student guidance, and she is closely involved in every learner’s progress.</p>
     <p>With a background in Zoology with Research, experience in online tutoring and a deep interest in language and literature, she combines scientific precision with creative communication. Her commitment to education is personal. She believes that dedicated teaching, structured practice and genuine care can change how a student learns.</p>
     <div class="statement mt-3" style="padding:28px">{icon("quote")}<p style="font-size:1.08rem">{ph("Founder’s personal message or quote, in her own words")}<span class="by">— Preety Kumari, Founder</span></p></div>
@@ -288,7 +288,7 @@ def courses():
 {"".join(blocks)}
 <section><div class="container">
   <div class="section-head center"><div class="eyebrow">Included in Every Programme</div><h2>Structured Academic Support</h2></div>
-  <div class="grid g-3" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">{"".join(feature(*s) for s in SUPPORT)}</div>
+  <div class="grid g-3" style="grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr))">{"".join(feature(*s) for s in SUPPORT)}</div>
 </div></section>
 {cta_band("Find the Right Course", "Tell us the class, course and subjects you are interested in, and we will guide you through the next steps.")}
 '''
@@ -306,7 +306,7 @@ def methodology():
      ("user", "Personalised Student Attention", "Academic guidance and practice are adapted to each student’s learning needs and progress.",
       ["Understanding each learner’s strengths and challenges", "Practice adapted to individual pace and level", "Targeted support for identified learning gaps", "Ongoing monitoring of progress", "Regular communication with parents"]),
     ]
-    cards = "".join(f'''<article class="card" style="border-top:4px solid var(--orange)"><div class="icon-badge dark">{icon(ic)}</div><div class="eyebrow">Approach 0{i+1}</div><h3>{t}</h3><p>{d}</p>{checklist(items)}</article>''' for i, (ic, t, d, items) in enumerate(approaches))
+    cards = "".join(f'''<article class="card" style="border-top:4px solid var(--orange)"><div class="icon-badge dark">{icon(ic)}</div><div class="eyebrow">Approach 0{i+1}</div><h2 class="h3">{t}</h2><p>{d}</p>{checklist(items)}</article>''' for i, (ic, t, d, items) in enumerate(approaches))
     cycle = [("Learn", "Concept explained clearly in a live class."), ("Practise", "Worksheets, assignments and DPPs."), ("Assess", "Weekly tests and performance analysis."),
              ("Review", "Doubt-solving and revision of weak areas."), ("Improve", "Progress shared with students and parents.")]
     body = f'''
@@ -317,7 +317,7 @@ def methodology():
 <section class="section-alt"><div class="container">
   <div class="section-head center"><div class="eyebrow">The Learning Cycle</div><h2>From Understanding to Improvement</h2>
   <p class="lead">Every topic moves through a structured cycle so that learning is reinforced, checked and improved.</p></div>
-  <div class="steps h">{"".join(f'<div class="step"><div><h4>{t}</h4><p class="small">{d}</p></div></div>' for t, d in cycle)}</div>
+  <div class="steps h">{"".join(f'<div class="step"><div><h2 class="h3 h4">{t}</h2><p class="small">{d}</p></div></div>' for t, d in cycle)}</div>
 </div></section>
 <section><div class="container"><div class="split">
   <div><div class="eyebrow">Online Learning &amp; Communication</div><h2>How Our Online Classroom Works</h2>

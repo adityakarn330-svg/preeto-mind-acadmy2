@@ -24,7 +24,7 @@ TEACH_ROLES = [
 
 def role_card(ic, title, desc, reqs):
     return (f'<article class="card"><div class="icon-badge">{icon(ic)}</div><h3>{title}</h3><p>{desc}</p>'
-            f'<h4 class="small" style="margin-top:14px">What we look for</h4>{checklist(reqs)}</article>')
+            f'<h3 class="h4 small" style="margin-top:14px">What we look for</h3>{checklist(reqs)}</article>')
 
 
 def careers():
@@ -64,7 +64,7 @@ def careers():
 
 <section class="section-dark"><div class="container">
   <div class="section-head center"><div class="eyebrow">Selection Process</div><h2>How to Apply</h2></div>
-  <div class="steps h" style="grid-template-columns:repeat(4,1fr)">{"".join(f'<div class="step"><div><h4>{t}</h4><p class="small">{d}</p></div></div>' for t, d in steps)}</div>
+  <div class="steps h" style="grid-template-columns:repeat(4,1fr)">{"".join(f'<div class="step"><div><h3 class="h4">{t}</h3><p class="small">{d}</p></div></div>' for t, d in steps)}</div>
 </div></section>
 
 <section id="apply"><div class="container"><div class="split wide-right" style="align-items:start">

@@ -9,7 +9,7 @@ CONFIG = {
     "whatsapp_number": "917979073971",   # digits with country code, e.g. "919876543210"
     "email": "preetomindacadmy@gmail.com",             # e.g. "admissions@preetomindacademy.in"
     "form_endpoint": "https://formsubmit.co/preetomindacadmy@gmail.com",  # FormSubmit: emails every submission to the founder
-    "site_url": "",          # final public URL, e.g. "https://sites.google.com/view/preetomind-academy"
+    "site_url": "https://preeto-mind-acadmy2-site.vercel.app",          # final public URL, e.g. "https://sites.google.com/view/preetomind-academy"
 }
 
 ACADEMY = "PreetoMind Academy"
@@ -151,7 +151,7 @@ FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com">'
 
 
 def brand_block():
-    return (f'<a class="brand" href="index.html" aria-label="{ACADEMY} - Home">'
+    return (f'<a class="brand" href="index.html">'
             f'<img class="brand-logo" src="assets/preetomind-logo.svg" alt="{ACADEMY} logo" width="52" height="52">'
             f'<span class="brand-text"><span class="brand-name">PREETOMIND <span>ACADEMY</span></span>'
             f'<span class="brand-tag">{TAGLINE}</span></span></a>')
@@ -225,9 +225,9 @@ def footer():
       <p>A founder-led online educational institution offering concept-based teaching, live interactive classes and personalised academic guidance.</p>
       <p class="mb-0"><strong style="color:#fff">Founder:</strong> Preety Kumari</p>
     </div>
-    <div><h4>Quick Links</h4><ul>{"".join(f'<li><a href="{h}">{t}</a></li>' for t, h in quick)}</ul></div>
-    <div><h4>Academic Departments</h4><ul>{"".join(f'<li><a href="{h}">{t}</a></li>' for t, h in depts)}</ul></div>
-    <div><h4>Contact</h4><ul class="footer-contact">
+    <div><h2 class="fh">Quick Links</h2><ul>{"".join(f'<li><a href="{h}">{t}</a></li>' for t, h in quick)}</ul></div>
+    <div><h2 class="fh">Academic Departments</h2><ul>{"".join(f'<li><a href="{h}">{t}</a></li>' for t, h in depts)}</ul></div>
+    <div><h2 class="fh">Contact</h2><ul class="footer-contact">
       <li>{icon("chat")}<span>WhatsApp: <a href="{wa_href()}">{contact_value("whatsapp")}</a></span></li>
       <li>{icon("mail")}<span>Email: <a href="{mail_href()}">{contact_value("email")}</a></span></li>
     </ul>
@@ -240,7 +240,7 @@ def footer():
     <span><a href="privacy-policy.html">Privacy Policy</a> &middot; <a href="terms-and-conditions.html">Terms &amp; Conditions</a></span>
   </div>
 </footer>
-<a class="wa-float" href="{wa_href()}" aria-label="Contact PreetoMind Academy on WhatsApp">{WA_SVG}<span>WhatsApp Us</span></a>'''
+<aside aria-label="Chat"><a class="wa-float" href="{wa_href()}" aria-label="WhatsApp Us: contact PreetoMind Academy">{WA_SVG}<span>WhatsApp Us</span></a></aside>'''
 
 
 def page(current, title, description, body, schema=None):
@@ -253,16 +253,24 @@ def page(current, title, description, body, schema=None):
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{html.escape(title)}</title>
 <meta name="description" content="{html.escape(description)}">
 <meta property="og:title" content="{html.escape(title)}">
 <meta property="og:description" content="{html.escape(description)}">
 <meta property="og:type" content="website">
-<meta property="og:image" content="assets/preetomind-logo.svg">
+<meta property="og:image" content="{CONFIG["site_url"].rstrip("/") + "/" if CONFIG["site_url"] else ""}assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="PreetoMind Academy">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#1E1F22">
 {canonical}
 <link rel="icon" href="assets/preetomind-logo.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<noscript><style>.menu-toggle{{display:none !important}}.main-nav{{position:static !important;transform:none !important;visibility:visible !important;width:auto !important;height:auto !important;box-shadow:none !important}}.dropdown{{position:static !important;opacity:1 !important;visibility:visible !important;transform:none !important;display:block !important}}</style></noscript>
 {FONTS}
 <link rel="stylesheet" href="assets/styles.css">
 {sch}
@@ -296,7 +304,7 @@ def cta_band(title="Interested in joining PreetoMind Academy?",
 
 
 def feature(ic, title, text):
-    return f'<div class="feature"><div class="ic">{icon(ic)}</div><div><h4>{title}</h4><p>{text}</p></div></div>'
+    return f'<div class="feature"><div class="ic">{icon(ic)}</div><div><h3 class="h4">{title}</h3><p>{text}</p></div></div>'
 
 
 def checklist(items, two=False):

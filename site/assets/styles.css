@@ -4,7 +4,7 @@
   --charcoal-2:#2A2C30;
   --charcoal-3:#3A3D42;
   --orange:#E8731A;
-  --orange-dark:#C65F10;
+  --orange-dark:#A64B09;
   --orange-soft:#FDF1E7;
   --white:#FFFFFF;
   --neutral:#F6F4F1;
@@ -50,7 +50,7 @@ ul{padding-left:1.2em}
 .brand-logo{width:52px;height:52px;flex:none}
 .brand-text{display:flex;flex-direction:column;line-height:1.1}
 .brand-name{font-family:var(--font-head);font-weight:800;font-size:1.22rem;letter-spacing:.06em;color:var(--charcoal)}
-.brand-name span{color:var(--orange)}
+.brand-name span{color:var(--orange-dark)}
 .brand-tag{font-family:var(--font-head);font-size:.68rem;font-weight:700;letter-spacing:.28em;color:var(--muted);margin-top:5px}
 .main-nav>ul{list-style:none;margin:0;padding:0;display:flex;align-items:center;gap:2px}
 .main-nav a,.main-nav button.dd-toggle{white-space:nowrap;font-family:var(--font-head);font-weight:600;font-size:.92rem;color:var(--charcoal);padding:10px 12px;border-radius:8px;display:flex;align-items:center;gap:4px;background:none;border:0;cursor:pointer}
@@ -62,24 +62,24 @@ ul{padding-left:1.2em}
 .has-dd:hover .dropdown,.has-dd:focus-within .dropdown,.has-dd.open .dropdown{opacity:1;visibility:visible;transform:none}
 .dropdown a{font-weight:500 !important}
 .nav-cta{margin-left:8px}
-.main-nav .nav-cta a{background:var(--orange);color:#fff;padding:9px 16px;border-radius:10px;white-space:nowrap}
-.main-nav .nav-cta a:hover{background:var(--orange-dark)}
+.main-nav .nav-cta a{background:#B0520C;color:#fff;padding:9px 16px;border-radius:10px;white-space:nowrap}
+.main-nav .nav-cta a:hover{background:#8F3F07}
 .menu-toggle{display:none;background:none;border:1px solid var(--neutral-2);border-radius:10px;padding:8px;cursor:pointer;color:var(--charcoal)}
 .menu-toggle svg{width:24px;height:24px}
 
 /* ---------- Buttons ---------- */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--font-head);font-weight:700;font-size:.95rem;padding:13px 22px;border-radius:10px;border:2px solid transparent;cursor:pointer;transition:.15s ease;text-decoration:none !important;line-height:1.2}
 .btn svg{width:18px;height:18px}
-.btn-primary{background:var(--orange);color:#fff !important}
-.btn-primary:hover{background:var(--orange-dark)}
+.btn-primary{background:#B0520C;color:#fff !important}
+.btn-primary:hover{background:#8F3F07}
 .btn-dark{background:var(--charcoal);color:#fff !important}
 .btn-dark:hover{background:#000}
 .btn-outline{border-color:var(--charcoal);color:var(--charcoal) !important;background:transparent}
 .btn-outline:hover{background:var(--charcoal);color:#fff !important}
 .btn-outline-light{border-color:rgba(255,255,255,.7);color:#fff !important}
 .btn-outline-light:hover{background:#fff;color:var(--charcoal) !important}
-.btn-whatsapp{background:#1FA855;color:#fff !important}
-.btn-whatsapp:hover{background:#178a45}
+.btn-whatsapp{background:#12803D;color:#fff !important}
+.btn-whatsapp:hover{background:#0F6B33}
 .btn-sm{padding:9px 16px;font-size:.88rem}
 .btn-row{display:flex;flex-wrap:wrap;gap:12px}
 
@@ -120,7 +120,7 @@ section{padding:84px 0}
 .page-hero h1{color:#fff;margin-bottom:.35em}
 .page-hero p{max-width:760px;font-size:1.08rem;margin:0;color:#c4c4c4}
 .breadcrumb{font-size:.85rem;margin-bottom:14px;color:#9c9c9c}
-.breadcrumb a{color:#e0e0e0}
+.breadcrumb a{color:#e0e0e0;text-decoration:underline;text-underline-offset:2px}
 
 /* ---------- Grid & cards ---------- */
 .grid{display:grid;gap:24px}
@@ -186,7 +186,7 @@ section{padding:84px 0}
 .value .num{font-family:var(--font-head);font-weight:800;font-size:1.5rem;color:var(--orange);min-width:38px}
 
 /* Quote / statement */
-.statement{background:var(--orange);color:#fff;border-radius:20px;padding:44px;display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:center}
+.statement{background:#B0520C;color:#fff;border-radius:20px;padding:44px;display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:center}
 .statement svg{width:52px;height:52px;opacity:.85}
 .statement p{font-family:var(--font-head);font-size:1.3rem;font-weight:600;line-height:1.5;margin:0}
 .statement .by{display:block;font-size:.92rem;font-weight:500;opacity:.9;margin-top:10px}
@@ -268,7 +268,7 @@ textarea{min-height:120px;resize:vertical}
 /* Footer */
 .site-footer{background:#141517;color:#a9abaf;padding:70px 0 0;font-size:.94rem}
 .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1.2fr 1.2fr;gap:40px}
-.site-footer h4{color:#fff;font-size:.95rem;letter-spacing:.06em;text-transform:uppercase;margin-bottom:16px}
+.site-footer h4,.site-footer h2.fh{color:#fff;font-size:.95rem;letter-spacing:.06em;text-transform:uppercase;margin-bottom:16px}
 .site-footer ul{list-style:none;padding:0;margin:0}
 .site-footer li{margin-bottom:9px}
 .site-footer a{color:#c9cbcf}
@@ -356,3 +356,36 @@ h1,h2,h3,h4,p,li{overflow-wrap:break-word}
 
 .has-dd.closed .dropdown,.has-dd.closed:hover .dropdown,.has-dd.closed:focus-within .dropdown{opacity:0;visibility:hidden;transform:translateY(6px)}
 @media (max-width:980px){.has-dd.closed .dropdown{display:none}}
+
+/* compatibility */
+.dept-card .dept-num::before{content:attr(data-n)}
+.site-footer .brand-name span{color:var(--orange)}
+.wa-float{background:#12803D}
+html{overflow-x:hidden}
+@supports (overflow:clip){html{overflow-x:visible}}
+
+.feature>*{min-width:0}
+@media (max-width:980px),(pointer:coarse){
+  .topbar a,.tb-links a{display:inline-flex;align-items:center;min-height:44px}
+  .site-footer li a,.site-footer a{display:inline-block;padding:11px 0}
+  .dept-card .more,.pill,.breadcrumb a{min-height:44px;display:inline-flex;align-items:center}
+  input[type=checkbox]{width:22px;height:22px}
+}
+@media print{
+  .topbar,.site-header,.wa-float,.menu-toggle,.cta-band,.skip-link{display:none !important}
+  body{background:#fff;color:#000}
+  a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em}
+  .hero,.page-hero,.statement{background:#fff !important;color:#000 !important}
+  *{box-shadow:none !important}
+}
+@media (forced-colors:active){.btn{border:2px solid ButtonText}}
+@media (max-width:980px),(pointer:coarse){.btn-sm{min-height:44px}input[type=checkbox]{width:22px !important;height:22px !important;min-width:22px}}
+
+.h4{font-size:1rem;font-weight:700}
+.feature h3{margin:0 0 2px}.section-dark .feature h3{color:#fff}.toc h3{margin-bottom:10px}
+.feature h3,.feature p{overflow-wrap:anywhere}
+main p a:not(.btn):not(.pill),main li a:not(.btn):not(.pill),.notice a,.form-note a,.small a{text-decoration:underline;text-underline-offset:2px}
+.toc h2{margin-bottom:10px}
+label a{text-decoration:underline;text-underline-offset:2px}
+h2.h3{font-size:1.18rem;font-weight:700}
+.card h2.h3{margin-bottom:.45em}

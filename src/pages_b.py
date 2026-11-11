@@ -12,7 +12,7 @@ def study_materials():
      ("Assignment", "Academic Assignment", "Structured assignments that build application skills, written expression and consistency.", "e.g. B.Sc. Zoology – unit assignment"),
      ("English", "Grammar & Vocabulary Sheet", "Grammar rules with examples, vocabulary lists and sentence-formation exercises.", "e.g. Tenses – practice sheet"),
     ]
-    cards = "".join(f'''<article class="card resource"><div class="thumb">{DOC_THUMB}</div><span class="tag">{tag}</span><h3>{t}</h3><p>{d}</p>
+    cards = "".join(f'''<article class="card resource"><div class="thumb">{DOC_THUMB}</div><span class="tag">{tag}</span><h2 class="h3">{t}</h2><p>{d}</p>
 <div class="ph-block" style="padding:14px;margin-top:auto">{ph_label("Founder to upload sample")}<p class="small mb-0">Title: {ph(ex)}<br>File: {ph("Link to sample PDF / Google Drive preview")}</p></div></article>''' for tag, t, d, ex in samples)
     body = f'''
 {page_hero("Study Materials and Learning Resources", "A preview of the academic resources that support every PreetoMind Academy student, prepared with care to show the quality of our teaching.", crumb="Study Materials", eyebrow="Learning Resources")}
@@ -56,12 +56,12 @@ def assessment():
     <p>Each assessment is used to guide what happens next, whether that is more practice, revision, a change of approach or extra support. Students and parents always know where things stand and what the next step is.</p>
     <div class="statement mt-3" style="padding:26px">{icon("trend")}<p style="font-size:1.05rem">Every test is a step towards improvement, not just a score.</p></div>
   </div>
-  <div class="steps">{"".join(f'<div class="step"><div><h4>{t}</h4><p class="small">{d}</p></div></div>' for t, d in steps)}</div>
+  <div class="steps">{"".join(f'<div class="step"><div><h3 class="h4">{t}</h3><p class="small">{d}</p></div></div>' for t, d in steps)}</div>
 </div></div></section>
 <section class="section-alt"><div class="container">
   <div class="section-head center"><div class="eyebrow">Student Academic Support System</div><h2>Every Facility Our Students Receive</h2>
   <p class="lead">PreetoMind Academy follows a structured academic support system. Each facility below is part of a planned routine of teaching, practice, assessment and feedback.</p></div>
-  <div class="grid g-4">{"".join(f'<div class="feature"><div class="ic">{icon(ic)}</div><div><h4 style="font-size:.95rem">{t}</h4></div></div>' for ic, t in facilities)}</div>
+  <div class="grid g-4">{"".join(f'<div class="feature"><div class="ic">{icon(ic)}</div><div><h3 class="h4" style="font-size:.95rem">{t}</h3></div></div>' for ic, t in facilities)}</div>
 </div></section>
 {cta_band()}
 '''
@@ -133,7 +133,7 @@ def admission():
 <section><div class="container"><div class="split wide-right" style="align-items:start">
   <div>
     <div class="eyebrow">Admission Process</div><h2>How Admission Works</h2>
-    <div class="steps">{"".join(f'<div class="step"><div><h4>{t}</h4><p class="small">{d}</p></div></div>' for t, d in steps)}</div>
+    <div class="steps">{"".join(f'<div class="step"><div><h3 class="h4">{t}</h3><p class="small">{d}</p></div></div>' for t, d in steps)}</div>
     <div class="notice mt-3">{icon("info")}<p><strong>Important:</strong> Submitting an enquiry does not confirm admission. Admission approval and confirmation are made by the founder.</p></div>
     <div class="notice">{icon("info")}<p>For course fees and admission details, please contact PreetoMind Academy directly.</p></div>
   </div>
@@ -175,15 +175,15 @@ def contact():
     for kind, cls, title, desc, href, label, btn in cards:
         ic = WA_SVG if kind == "whatsapp" else icon("phone" if kind == "phone" else "mail")
         bi = WA_SVG if kind == "whatsapp" else icon("phone" if kind == "phone" else "mail")
-        out.append(f'''<article class="card contact-card" id="{kind}"><div class="icon-badge {cls}">{ic}</div><h3>{title}</h3><p>{desc}</p>
+        out.append(f'''<article class="card contact-card" id="{kind}"><div class="icon-badge {cls}">{ic}</div><h2 class="h3">{title}</h2><p>{desc}</p>
 <div class="value-line">{contact_value(kind)}</div><a class="btn {btn}" href="{href}">{bi}{label}</a></article>''')
     body = f'''
 {page_hero("Contact Us", "For admissions, course information, and academic enquiries, please contact PreetoMind Academy directly.", eyebrow="Get in Touch")}
 <section><div class="container">
   <div class="grid g-2">{"".join(out)}</div>
   <div class="grid g-2 mt-4">
-    <div class="card" style="background:var(--neutral)"><h3>Prefer to Fill a Form?</h3><p>Send us your details through the Admission Enquiry form and we will get back to you.</p><a class="btn btn-outline" href="admission-enquiry.html">Go to Admission Enquiry {icon("arrow")}</a></div>
-    <div class="card" style="background:var(--neutral)"><h3>Course Fees</h3><p>For course fees and admission details, please contact PreetoMind Academy directly. Fee details are discussed personally with the founder.</p><a class="btn btn-outline" href="faq.html">Read FAQs {icon("arrow")}</a></div>
+    <div class="card" style="background:var(--neutral)"><h2 class="h3">Prefer to Fill a Form?</h2><p>Send us your details through the Admission Enquiry form and we will get back to you.</p><a class="btn btn-outline" href="admission-enquiry.html">Go to Admission Enquiry {icon("arrow")}</a></div>
+    <div class="card" style="background:var(--neutral)"><h2 class="h3">Course Fees</h2><p>For course fees and admission details, please contact PreetoMind Academy directly. Fee details are discussed personally with the founder.</p><a class="btn btn-outline" href="faq.html">Read FAQs {icon("arrow")}</a></div>
   </div>
 </div></section>
 '''
@@ -228,7 +228,7 @@ def policy_page(file, title, intro, desc, sections, seo_title):
     body = f'''
 {page_hero(title, intro)}
 <section><div class="container policy-layout">
-  <aside class="toc"><h4>Contents</h4><ol>{toc}</ol></aside>
+  <aside class="toc"><h2 class="h4">Contents</h2><ol>{toc}</ol></aside>
   <div class="prose">
     <p class="small muted">Last updated: {ph("Date of publication")}</p>
     {content}
