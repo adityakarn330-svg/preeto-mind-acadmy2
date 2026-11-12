@@ -1,6 +1,6 @@
 # Admin dashboard setup (about 10 minutes, free)
 
-Visitors fill a form on the website. The enquiry is saved in a Supabase database and a copy is emailed to preetomindacadmy@gmail.com. You see everything on `/admin`.
+Visitors fill a form on the website. The enquiry is saved in a Supabase database and a copy is emailed to preetomindacademy@gmail.com. You see everything on `/admin`.
 
 ## 1. Create the database (Supabase)
 1. Sign up at supabase.com (free), click **New project**, choose a name and a strong database password, and wait for it to finish.

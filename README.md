@@ -8,4 +8,4 @@ Yellow **[placeholders]** mark details the founder must supply or verify. No qua
 
 ## Forms
 
-The Admission Enquiry and Team Application forms post to FormSubmit (`CONFIG["form_endpoint"]` in `src/core.py`) and are emailed to preetomindacadmy@gmail.com. Activate once by clicking the link FormSubmit sends to that inbox after the first submission. To change the destination, edit `form_endpoint` and rebuild.
+The Admission Enquiry and Team Application forms post to FormSubmit (`CONFIG["form_endpoint"]` in `src/core.py`) and are emailed to preetomindacademy@gmail.com. Activate once by clicking the link FormSubmit sends to that inbox after the first submission. To change the destination, edit `form_endpoint` and rebuild.
