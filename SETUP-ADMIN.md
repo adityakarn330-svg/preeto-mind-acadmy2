@@ -28,3 +28,11 @@ Then go to **Deployments -> Redeploy** so the new values are used.
 ## Notes
 - If the database is not connected, the forms still email you, so nothing is lost.
 - Change ADMIN_PASSWORD in Vercel (and redeploy) whenever you want to lock out an old password.
+
+## Student portal
+
+The student portal uses the same Supabase project. Run `db/setup.sql` first if needed, then run `db/student-portal.sql` once in Supabase SQL Editor. In Vercel add a high-entropy random secret environment variable named `STUDENT_SESSION_SECRET` for every deployed environment, then redeploy. The student login cookie is Secure, so use the HTTPS Vercel URL.
+
+After a UPI or bank payment is verified, open `/admin-students.html` and log in with `ADMIN_PASSWORD`. Create the batch, create the student account, assign the batch, and securely give the student the Student ID and password. Add weekly reports from the same page. Students use `/student-login.html`; their private dashboard is `/student-dashboard.html`.
+
+Student passwords are stored as hashes. Do not put them in GitHub, email them publicly, or store the `SUPABASE_SERVICE_KEY` in browser code.
