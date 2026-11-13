@@ -7,8 +7,8 @@ import html
 # ---------------------------------------------------------------------------
 CONFIG = {
     "whatsapp_number": "917979073971",   # digits with country code, e.g. "919876543210"
-    "email": "preetomindacadmy@gmail.com",             # e.g. "admissions@preetomindacademy.in"
-    "form_endpoint": "https://formsubmit.co/preetomindacadmy@gmail.com",  # FormSubmit: emails every submission to the founder
+    "email": "preetomindacademy@gmail.com",             # e.g. "admissions@preetomindacademy.in"
+    "form_endpoint": "https://formsubmit.co/preetomindacademy@gmail.com",  # FormSubmit: emails every submission to the founder
     "site_url": "https://preeto-mind-acadmy2-site.vercel.app",          # final public URL, e.g. "https://sites.google.com/view/preetomind-academy"
 }
 

@@ -110,7 +110,7 @@ Use **Insert → Layouts** (two or three-column cards) for card grids. Use **Ins
 
 ## 7. Admission Enquiry Form (Google Forms)
 
-> **Static site (zip) note:** in the static website both forms (Admission Enquiry and Team Application) are already connected through **FormSubmit** (`https://formsubmit.co/preetomindacadmy@gmail.com`) and email every submission to **preetomindacadmy@gmail.com** with the reply-to set to the sender. FormSubmit emails a one-time **Activate** link to that Gmail after the first submission; click it once and the forms are live. Google Sites cannot host custom HTML forms, so the Google Sites version uses Google Forms as below.
+> **Static site (zip) note:** in the static website both forms (Admission Enquiry and Team Application) are already connected through **FormSubmit** (`https://formsubmit.co/preetomindacademy@gmail.com`) and email every submission to **preetomindacademy@gmail.com** with the reply-to set to the sender. FormSubmit emails a one-time **Activate** link to that Gmail after the first submission; click it once and the forms are live. Google Sites cannot host custom HTML forms, so the Google Sites version uses Google Forms as below.
 
 
 1. In **Google Forms**, create **"PreetoMind Academy – Admission Enquiry"** with these questions:
@@ -161,7 +161,7 @@ Everything shown as **[yellow placeholder]** in the prototype needs verified inf
 
 - [ ] Official logo (header, footer, favicon)
 - [ ] Founder's professional photograph (with alt text "Preety Kumari, Founder of PreetoMind Academy")
-- [x] WhatsApp +91 79790 73971 and email preetomindacadmy@gmail.com are in place
+- [x] WhatsApp +91 79790 73971 and email preetomindacademy@gmail.com are in place
 - [ ] Founder: institution and year for B.Sc. Zoology with Research, research area (optional)
 - [ ] Founder: teaching experience duration and classes taught
 - [ ] Founder: exact certification names, issuing bodies and years
@@ -169,14 +169,14 @@ Everything shown as **[yellow placeholder]** in the prototype needs verified inf
 - [ ] Founder's personal message or quote
 - [ ] Sample study materials (PDFs you are happy to share publicly)
 - [ ] Genuine testimonials (with permission and consent for any photos). Hide the section until you have some.
-- [ ] Static site: click the FormSubmit activation link sent to preetomindacadmy@gmail.com, then submit a test enquiry
+- [ ] Static site: click the FormSubmit activation link sent to preetomindacademy@gmail.com, then submit a test enquiry
 - [ ] Google Sites: Google Form connected, with email delivery tested by submitting a test enquiry
 - [ ] Privacy Policy: form service used, retention period, publication date
 - [ ] Terms and Conditions: reviewed against actual academy practice
 - [ ] Click every button and link on desktop and phone preview
 
-## Email updates to preetomindacadmy@gmail.com
+## Email updates to preetomindacademy@gmail.com
 
-- **Static site:** every enquiry and team application is emailed to preetomindacadmy@gmail.com (subjects: "New Admission Enquiry" / "New Team Application"). Replying to the email replies to the sender. The admission form also sends the sender a short acknowledgement that states admission is not confirmed.
+- **Static site:** every enquiry and team application is emailed to preetomindacademy@gmail.com (subjects: "New Admission Enquiry" / "New Team Application"). Replying to the email replies to the sender. The admission form also sends the sender a short acknowledgement that states admission is not confirmed.
 - **Google Sites version:** in each Google Form open Responses, then the three-dot menu, then "Get email notifications for new responses", and link a Google Sheet via Responses, then "Link to Sheets", to keep a record.
 - In Gmail, create a filter for subject "Enquiry" or "Team Application" to label and star these emails so none are missed.
