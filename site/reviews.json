@@ -1,1 +1,25 @@
-{ "reviews": [] }
+{
+  "reviews": [
+    {
+      "name": "Ritika Sharma",
+      "course": "",
+      "role": "Student",
+      "text": "I have had a wonderful experience with Preeto Mind Academy. The teachers are very supportive, knowledgeable, and make complex concepts easy to understand. The learning environment is positive and motivating, which has really helped boost my confidence and academic performance. Highly recommended!",
+      "published": true
+    },
+    {
+      "name": "Ansh Kumar",
+      "course": "",
+      "role": "Student",
+      "text": "Joining Preeto Mind Academy has been a great decision for my studies. The faculty goes above and beyond to ensure every student receives personal attention and clears all their doubts patiently. Along with regular classes, the guidance and study strategies provided here have made a noticeable improvement in my focus and results. Thank you to the entire team for their constant encouragement!",
+      "published": true
+    },
+    {
+      "name": "Soni Devi",
+      "course": "",
+      "role": "Parent",
+      "text": "Joining Preeto Mind Academy has been a great decision for my studies. The faculty goes above and beyond to ensure every student receives personal attention and clears all their doubts patiently. Along with regular classes, the guidance and study strategies provided here have made a noticeable improvement in my focus and results. Thank you to the entire team for their constant encouragement!",
+      "published": true
+    }
+  ]
+}
