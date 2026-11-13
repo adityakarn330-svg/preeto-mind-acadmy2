@@ -41,4 +41,38 @@ function isAdmin(req) {
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
-module.exports = { configured, sb, readBody, isAdmin, sleep };
+const util = require('util');
+const scrypt = util.promisify(crypto.scrypt);
+
+async function hashPassword(pw) {
+  const salt = crypto.randomBytes(16);
+  const h = await scrypt(String(pw), salt, 32);
+  return salt.toString('hex') + ':' + h.toString('hex');
+}
+async function verifyPassword(pw, stored) {
+  try {
+    const [s, h] = String(stored).split(':');
+    const d = await scrypt(String(pw), Buffer.from(s, 'hex'), 32);
+    const e = Buffer.from(h, 'hex');
+    return d.length === e.length && crypto.timingSafeEqual(d, e);
+  } catch (e) { return false; }
+}
+
+function tokenSecret() { return process.env.PORTAL_SECRET || process.env.ADMIN_PASSWORD || ''; }
+function signToken(payload) {
+  const body = Buffer.from(JSON.stringify(payload)).toString('base64url');
+  const sig = crypto.createHmac('sha256', tokenSecret()).update(body).digest('base64url');
+  return body + '.' + sig;
+}
+function verifyToken(t) {
+  try {
+    const [body, sig] = String(t).split('.');
+    const good = crypto.createHmac('sha256', tokenSecret()).update(body).digest('base64url');
+    const a = Buffer.from(sig || ''), b = Buffer.from(good);
+    if (a.length !== b.length || !crypto.timingSafeEqual(a, b)) return null;
+    const p = JSON.parse(Buffer.from(body, 'base64url').toString());
+    return p.exp && p.exp > Date.now() ? p : null;
+  } catch (e) { return null; }
+}
+
+module.exports = { configured, sb, readBody, isAdmin, sleep, hashPassword, verifyPassword, signToken, verifyToken, tokenSecret };

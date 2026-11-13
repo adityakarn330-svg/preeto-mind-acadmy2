@@ -121,7 +121,7 @@ def home():
       <h2 class="founder-name">Preety Kumari</h2>
       <div class="founder-role">Founder – PreetoMind Academy | Educator | Creative Writer</div>
       <div class="pill-row"><span class="pill">Biology &amp; Science</span><span class="pill">English Grammar &amp; Vocabulary</span><span class="pill">Literary Award Recipient</span></div>
-      <p>Preety Kumari founded PreetoMind Academy to give students what she believes every learner deserves: clear concepts, consistent practice and personal academic attention. With a B.Sc. in Zoology with Research, she brings a strong scientific foundation to her teaching of Biology and Science.</p>
+      <p>Preety Kumari founded PreetoMind Academy to give students what she believes every learner deserves: clear concepts, consistent practice and personal academic attention. She brings a strong scientific foundation and a clear, caring approach to her teaching of Biology and Science.</p>
       <p>Alongside her experience in online tutoring, she teaches English Grammar and Vocabulary and creates educational content for her students. She is also a creative writer and a recipient of literary recognition. This mix of scientific discipline and creative expression shapes how she teaches: precise and thorough, but also engaging and encouraging.</p>
       <p class="small muted">Professional certifications and literary achievements: {ph("Founder to add verified certification and award names")}</p>
       <a class="btn btn-outline" href="founder.html">About the Founder {icon("arrow")}</a>

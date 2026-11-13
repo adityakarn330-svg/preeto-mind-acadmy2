@@ -83,7 +83,10 @@ def review_card(r):
 
 
 def testimonials():
-    cards = "".join(review_card(r) for r in REVIEWS) if REVIEWS else "".join(testimonial_slot() for _ in range(6))
+    empty = ('<article class="card" style="grid-column:1/-1;text-align:center"><h2 class="h3">Be the first to share your experience</h2>'
+             '<p>We publish only genuine feedback from our students and parents. If you have studied with PreetoMind Academy, please share your experience using the form below.</p></article>'
+             f'<div hidden>{icon("quote","q")}<div class="avatar">{icon("user")}</div></div>')
+    cards = "".join(review_card(r) for r in REVIEWS) if REVIEWS else empty
     body = f'''
 {page_hero("Testimonials", "Genuine feedback from PreetoMind Academy students and parents, shared with their permission.", eyebrow="Student & Parent Feedback")}
 <section><div class="container">
